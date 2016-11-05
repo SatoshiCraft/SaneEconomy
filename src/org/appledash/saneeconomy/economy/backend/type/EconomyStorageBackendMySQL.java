@@ -62,7 +62,7 @@ public class EconomyStorageBackendMySQL extends EconomyStorageBackendCaching {
         SaneEconomy.logger().info("Upgrading database schema from version 1 to version 2. This might take a little while...");
         PreparedStatement ps = conn.prepareStatement("REPLACE INTO `saneeconomy_schema` (`key`, `val`) VALUES ('schema_version', '2')");
         ps.executeUpdate();
-        conn.prepareStatement("CREATE TABLE `saneeconomy_balances` (unique_identifier VARCHAR(128) PRIMARY KEY, balance DECIMAL(18, 2))").executeUpdate();
+        conn.prepareStatement("CREATE TABLE `saneeconomy_balances` (player VARCHAR(128) PRIMARY KEY, balance DECIMAL(18, 2))").executeUpdate();
         ps = conn.prepareStatement("SELECT * FROM `player_balances`");
         ResultSet rs = ps.executeQuery();
 
@@ -73,8 +73,8 @@ public class EconomyStorageBackendMySQL extends EconomyStorageBackendCaching {
         }
 
         for (Entry<String, Double> e : oldBalances.entrySet()) {
-            ps = conn.prepareStatement("INSERT INTO `saneeconomy_balances` (unique_identifier, balance) VALUES (?, ?)");
-            ps.setString(1, "player:" + e.getKey());
+            ps = conn.prepareStatement("INSERT INTO `saneeconomy_balances` (player, balance) VALUES (?, ?)");
+            ps.setString(1, e.getKey());
             ps.setDouble(2, e.getValue());
             ps.executeUpdate();
         }
@@ -106,7 +106,7 @@ public class EconomyStorageBackendMySQL extends EconomyStorageBackendCaching {
             balances.clear();
 
             while (rs.next()) {
-                balances.put(rs.getString("unique_identifier"), rs.getDouble("balance"));
+                balances.put(rs.getString("player"), rs.getDouble("balance"));
             }
         } catch (SQLException e) {
             throw new RuntimeException("Failed to reload data from SQL.", e);
@@ -121,7 +121,7 @@ public class EconomyStorageBackendMySQL extends EconomyStorageBackendCaching {
         dbConn.executeAsyncOperation((conn) -> {
             try {
                 ensureAccountExists(economable, conn);
-                PreparedStatement statement = conn.prepareStatement("UPDATE `saneeconomy_balances` SET balance = ? WHERE `unique_identifier` = ?");
+                PreparedStatement statement = conn.prepareStatement("UPDATE `saneeconomy_balances` SET balance = ? WHERE `player` = ?");
                 statement.setDouble(1, newBalance);
                 statement.setString(2, economable.getUniqueIdentifier());
                 statement.executeUpdate();
@@ -134,14 +134,14 @@ public class EconomyStorageBackendMySQL extends EconomyStorageBackendCaching {
 
     private synchronized void ensureAccountExists(Economable economable, Connection conn) throws SQLException {
         if (!accountExists(economable, conn)) {
-            PreparedStatement statement = conn.prepareStatement("INSERT INTO `saneeconomy_balances` (unique_identifier, balance) VALUES (?, 0.0)");
+            PreparedStatement statement = conn.prepareStatement("INSERT INTO `saneeconomy_balances` (player, balance) VALUES (?, 0.0)");
             statement.setString(1, economable.getUniqueIdentifier());
             statement.executeUpdate();
         }
     }
 
     private synchronized boolean accountExists(Economable economable, Connection conn) throws SQLException {
-        PreparedStatement statement = conn.prepareStatement("SELECT 1 FROM `saneeconomy_balances` WHERE `unique_identifier` = ?");
+        PreparedStatement statement = conn.prepareStatement("SELECT 1 FROM `saneeconomy_balances` WHERE `player` = ?");
         statement.setString(1, economable.getUniqueIdentifier());
 
         ResultSet rs = statement.executeQuery();

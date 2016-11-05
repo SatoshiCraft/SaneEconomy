@@ -44,7 +44,7 @@ public class BalanceCommand extends SaneEconomyCommand {
 
             Player player = (Player) sender;
 
-            playerIdentifier = player.getUniqueId().toString();
+            playerIdentifier = player.getPlayer().toString();
             playerName = player.getDisplayName();
         } else {
             playerIdentifier = args[0];

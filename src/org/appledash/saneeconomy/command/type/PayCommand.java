@@ -60,7 +60,7 @@ public class PayCommand extends SaneEconomyCommand {
             return;
         }
 
-        if (toPlayer.getUniqueId().equals(fromPlayer.getUniqueId())) {
+        if (toPlayer.getPlayer().equals(fromPlayer.getPlayer())) {
             MessageUtils.sendMessage(sender, "You cannot pay yourself.");
             return;
         }
