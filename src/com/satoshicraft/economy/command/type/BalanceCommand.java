@@ -5,7 +5,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.satoshicraft.economy.SatoshiEconomy;
-import com.satoshicraft.economy.command.SaneEconomyCommand;
+import com.satoshicraft.economy.command.SatoshiEconomyCommand;
 import com.satoshicraft.economy.command.exception.CommandException;
 import com.satoshicraft.economy.command.exception.type.usage.NeedPlayerException;
 import com.satoshicraft.economy.economy.economable.Economable;
@@ -16,7 +16,7 @@ import com.satoshicraft.economy.utils.PlayerUtils;
  * Created by AppleDash on 6/13/2016.
  * Blackjack is still best pony.
  */
-public class BalanceCommand extends SaneEconomyCommand {
+public class BalanceCommand extends SatoshiEconomyCommand {
     public BalanceCommand(SatoshiEconomy saneEconomy) {
         super(saneEconomy);
     }
@@ -57,7 +57,7 @@ public class BalanceCommand extends SaneEconomyCommand {
             }
         }
 
-        OfflinePlayer player = PlayerUtils.getOfflinePlayer(playerIdentifier);
+        OfflinePlayer player = PlayerUtils.getOfflinePlayer(playerName);
 
         if (player == null) {
             MessageUtils.sendMessage(sender, "That player does not exist.");

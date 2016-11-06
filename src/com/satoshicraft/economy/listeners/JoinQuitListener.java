@@ -10,7 +10,6 @@ import com.satoshicraft.economy.SatoshiEconomy;
 import com.satoshicraft.economy.economy.economable.Economable;
 import com.satoshicraft.economy.economy.transaction.Transaction;
 import com.satoshicraft.economy.economy.transaction.TransactionReason;
-import com.satoshicraft.economy.updates.GithubVersionChecker;
 import com.satoshicraft.economy.utils.MessageUtils;
 
 /**
@@ -38,9 +37,5 @@ public class JoinQuitListener implements Listener {
             MessageUtils.sendMessage(player, "You've been issued a starting balance of %s!", plugin.getEconomyManager().getCurrency().formatAmount(startBalance));
         }
 
-        /* Update notification */
-        if (player.hasPermission("saneeconomy.update-notify") && plugin.getVersionChecker().isUpdateAvailable()) {
-            MessageUtils.sendMessage(player, "An update is available! The currently-installed version is %s, but the newest available is %s. Please go to %s to update!", plugin.getDescription().getVersion(), plugin.getVersionChecker().getNewestVersion(), GithubVersionChecker.DOWNLOAD_URL);
-        }
     }
 }

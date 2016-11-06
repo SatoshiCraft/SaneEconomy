@@ -1,7 +1,7 @@
 package com.satoshicraft.economy.command.type;
 
 import com.satoshicraft.economy.SatoshiEconomy;
-import com.satoshicraft.economy.command.SaneEconomyCommand;
+import com.satoshicraft.economy.command.SatoshiEconomyCommand;
 import com.satoshicraft.economy.command.exception.CommandException;
 import com.satoshicraft.economy.command.exception.type.usage.InvalidUsageException;
 import com.satoshicraft.economy.command.exception.type.usage.NeedPlayerException;
@@ -24,7 +24,7 @@ import static com.satoshicraft.economy.utils.I18n._;
  * Created by AppleDash on 6/13/2016.
  * Blackjack is still best pony.
  */
-public class EconomyAdminCommand extends SaneEconomyCommand {
+public class EconomyAdminCommand extends SatoshiEconomyCommand {
     public EconomyAdminCommand(SatoshiEconomy saneEconomy) {
         super(saneEconomy);
     }

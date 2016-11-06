@@ -27,11 +27,10 @@ public class I18n {
 
     public void loadTranslations() {
         File configFile = new File(plugin.getDataFolder(), "messages.yml");
-        YamlConfiguration configJar = YamlConfiguration.loadConfiguration(new InputStreamReader(this.getClass().getResourceAsStream("/messages.yml")));
 
         if (configFile.exists()) { // Attempt to merge any new keys from the JAR's messages.yml into the copy in the plugin's data folder
             YamlConfiguration configFileYaml = YamlConfiguration.loadConfiguration(configFile);
-            for (Map jarMap : configJar.getMapList("messages")) {
+            for (Map jarMap : configFileYaml.getMapList("messages")) {
                 boolean has = false;
                 String key = jarMap.get("message").toString();
 
@@ -55,11 +54,6 @@ public class I18n {
                 throw new RuntimeException("Failed to save translations file.", e);
             }
         } else {
-            try {
-                configJar.save(configFile);
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to save initial translations file.", e);
-            }
         }
 
         YamlConfiguration configFileYaml = YamlConfiguration.loadConfiguration(configFile);

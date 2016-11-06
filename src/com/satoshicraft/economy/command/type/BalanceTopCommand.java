@@ -4,7 +4,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 
 import com.satoshicraft.economy.SatoshiEconomy;
-import com.satoshicraft.economy.command.SaneEconomyCommand;
+import com.satoshicraft.economy.command.SatoshiEconomyCommand;
 import com.satoshicraft.economy.command.exception.CommandException;
 import com.satoshicraft.economy.command.exception.type.usage.TooManyArgumentsException;
 import com.satoshicraft.economy.utils.MessageUtils;
@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by AppleDash on 6/13/2016.
  * Blackjack is still best pony.
  */
-public class BalanceTopCommand extends SaneEconomyCommand {
+public class BalanceTopCommand extends SatoshiEconomyCommand {
     public BalanceTopCommand(SatoshiEconomy saneEconomy) {
         super(saneEconomy);
     }

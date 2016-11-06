@@ -5,7 +5,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.satoshicraft.economy.SatoshiEconomy;
-import com.satoshicraft.economy.command.SaneEconomyCommand;
+import com.satoshicraft.economy.command.SatoshiEconomyCommand;
 import com.satoshicraft.economy.command.exception.CommandException;
 import com.satoshicraft.economy.command.exception.type.usage.NeedPlayerException;
 import com.satoshicraft.economy.economy.EconomyManager;
@@ -22,7 +22,7 @@ import com.satoshicraft.economy.utils.NumberUtils;
  *
  * TODO: Support for paying offline players.
  */
-public class PayCommand extends SaneEconomyCommand {
+public class PayCommand extends SatoshiEconomyCommand {
     public PayCommand(SatoshiEconomy saneEconomy) {
         super(saneEconomy);
     }

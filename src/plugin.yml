@@ -1,5 +1,4 @@
-name: satoshieconomy
-author: AppleDash
+name: SatoshiEconomy
 main: com.satoshicraft.economy.SatoshiEconomy
 version: 1.0
 loadbefore: [Vault]

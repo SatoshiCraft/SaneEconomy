@@ -3,7 +3,7 @@ package com.satoshicraft.economy.command.type;
 import org.bukkit.command.CommandSender;
 
 import com.satoshicraft.economy.SatoshiEconomy;
-import com.satoshicraft.economy.command.SaneEconomyCommand;
+import com.satoshicraft.economy.command.SatoshiEconomyCommand;
 import com.satoshicraft.economy.command.exception.CommandException;
 import com.satoshicraft.economy.command.exception.type.usage.InvalidUsageException;
 import com.satoshicraft.economy.utils.MessageUtils;
@@ -12,7 +12,7 @@ import com.satoshicraft.economy.utils.MessageUtils;
  * Created by AppleDash on 6/14/2016.
  * Blackjack is still best pony.
  */
-public class SaneEcoCommand extends SaneEconomyCommand {
+public class SaneEcoCommand extends SatoshiEconomyCommand {
     public SaneEcoCommand(SatoshiEconomy saneEconomy) {
         super(saneEconomy);
     }
