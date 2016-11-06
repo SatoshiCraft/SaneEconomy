@@ -1,64 +1,64 @@
-name: SaneEconomy
+name: satoshieconomy
 author: AppleDash
-main: org.appledash.saneeconomy.SaneEconomy
-version: 0.9.0
+main: com.satoshicraft.economy.SatoshiEconomy
+version: 1.0
 loadbefore: [Vault]
 commands:
   balance:
     aliases: [bal, money]
     description: Get the balance of yourself or another player.
     usage: /<command> [player name]
-    permission: saneeconomy.balance
+    permission: satoshieconomy.balance
   ecoadmin:
     aliases: [eco]
     description: Edit players' balances.
     usage: /<command> <give/take/set> <player name> <amount>
-    permission: saneeconomy.ecoadmin
+    permission: satoshieconomy.ecoadmin
   pay:
     aliases: [transfer]
     description: Give some of your money to another player.
     usage: /<command> <player> <amount>
-    permission: saneeconomy.pay
-  saneeconomy:
+    permission: satoshieconomy.pay
+  satoshieconomy:
     aliases: [saneeco]
-    description: Various administrative commands for SaneEconomy.
+    description: Various administrative commands for satoshieconomy.
     usage: /<command> reload-database
-    permission: saneeconomy.admin
+    permission: satoshieconomy.admin
   balancetop:
     aliases: [baltop, topbal]
     description: Show the players who have the most money on the server.
     usage: /<command>
-    permission: saneeconomy.balancetop
+    permission: satoshieconomy.balancetop
 
 permissions:
-  saneeconomy.balance:
+  satoshieconomy.balance:
     description: Allows you to check your balance.
     default: true
-  saneeconomy.balance.other:
+  satoshieconomy.balance.other:
     description: Allows you to check other players' balances.
     default: op
-  saneeconomy.ecoadmin:
+  satoshieconomy.ecoadmin:
     description: Allows you to edit players' balances.
     default: op
-  saneeconomy.pay:
+  satoshieconomy.pay:
     description: Allows you to pay money to other players.
     default: true
-  saneeconomy.admin:
+  satoshieconomy.admin:
     description: Allows you to administrate the plugin.
     default: op
-  saneeconomy.balancetop:
+  satoshieconomy.balancetop:
     description: Allows you to view the players on the server who have the most money.
     default: true
-  saneeconomy.update-notify:
+  satoshieconomy.update-notify:
     description: Allows you to be notified of updates to the plugin on join.
     default: op
-  saneeconomy.*:
+  satoshieconomy.*:
     children:
-      saneeconomy.balance: true
-      saneeconomy.balance.other: true
-      saneeconomy.ecoadmin: true
-      saneeconomy.pay: true
-      saneeconomy.admin: true
-      saneeconomy.balancetop: true
-      saneeconomy.update-notify: true
+      satoshieconomy.balance: true
+      satoshieconomy.balance.other: true
+      satoshieconomy.ecoadmin: true
+      satoshieconomy.pay: true
+      satoshieconomy.admin: true
+      satoshieconomy.balancetop: true
+      satoshieconomy.update-notify: true
     default: op

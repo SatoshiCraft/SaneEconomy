@@ -3,13 +3,13 @@ backend:
 
 currency:
   name:
-    singular: dollar
-    plural: dollars
-  format: '0.00'
-  grouping: 3
+    singular: ''
+    plural: ''
+  format: '0'
+  grouping: 0
 
 chat:
-  prefix: '&b[&9Economy&b]&r '
+  prefix: '&6[SatoshiEconomy]&r '
 
 economy:
   start-balance: 0.0
